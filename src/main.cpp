@@ -5,6 +5,8 @@
 #include <ElegantOTA.h>
 // #include <WiFi.h>
 #include <global.h>
+#include <ESP8266Ping.h>               // V1.1.0 by Daniele Colanardi - manual download from https://github.com/dancol90/ESP8266Ping
+
 
 // put function declarations here:
 int myFunction(int, int);
@@ -58,5 +60,5 @@ void loop() {
   // UDP_handler()
   // telemetry();
   status_print();
-
+  ping_check();
 }

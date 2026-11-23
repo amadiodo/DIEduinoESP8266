@@ -48,7 +48,7 @@ void debug(char text[]) {
   // char testo[100];
   strcat(str, text);
   text_to_web_page(str);
-  // DEBUG_USART.println(str);
+  DEBUG_USART.println(str);
 }
 
 
@@ -77,14 +77,8 @@ void status_print() {
     print_old_time = millis();
     if(status_print_enable) {
       char debug_buffer[100];
-      // if(cucina_enable) {
-      //   sprintf(debug_buffer, "Mini: %d Casa: %d Temperaure %f", cucina_TLM.mini_ON, cucina_TLM.casa_ON, cucina_TLM.closed);
-      //   debug(debug_buffer);
-      // }
-      // if(garage_enable) {
-      //   sprintf(debug_buffer, "CC V: %f %f %f", basement_TLM.AC_voltage, basement_TLM.AC_current, basement_TLM.AC_power);
-      //   debug(debug_buffer);
-      // }
+        sprintf(debug_buffer, "Scan %d %d %d %d %d %d %d %d ", scanner_TLM.IP[2], scanner_TLM.IP[3], scanner_TLM.IP[4], scanner_TLM.IP[5], scanner_TLM.IP[6], scanner_TLM.IP[6], scanner_TLM.IP[7], scanner_TLM.IP[8], scanner_TLM.IP[9], scanner_TLM.IP[10] );
+        debug(debug_buffer);
     }
   }
 }

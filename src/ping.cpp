@@ -1,13 +1,8 @@
 #include <global.h>
-// #include <ESP32Ping.h>
+#include <ESP8266Ping.h>
 
-// IPAddress IP_mini_eth = IPAddress(192, 168, 3, 25);
-// // IPAddress IP_mini_WiFi = IPAddress(192, 168, 3, 22);
-// IPAddress IP_mini_WiFi = IPAddress(192, 168, 7, 11);
-// IPAddress IP_TV = IPAddress(192, 168, 3, 20);
-// IPAddress IP_casa = IPAddress(192, 168, 3, 27);
-
-// uint32_t ping_old_time;
+scanner_TLM_sct scanner_TLM;
+uint32_t ping_old_time;
 
 // void ping_check() {
 //   if(millis() - ping_old_time > 60000) {
@@ -19,4 +14,15 @@
 //     cucina_TLM.TV_ON = Ping.ping(IP_TV, 1);
 //   }
 // }
+
+void ping_check () {
+    if(millis() - ping_old_time > 20000) {
+        ping_old_time = millis();
+        for(uint8_t i = 2; i < 15; i++) {
+            IPAddress IP_check = IPAddress(192, 168, 7 , i);
+            scanner_TLM.IP[i] = Ping.ping(IP_check, 2);
+            delay(100);
+        }
+    }
+}
 

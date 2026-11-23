@@ -9,7 +9,7 @@
 
 
 // extern SoftwareSerial SOFTWAR_DEBUG_USART;
-// #define DEBUG_USART SOFTWAR_DEBUG_USART
+#define DEBUG_USART Serial
 #define PZEM_SERIAL Serial
 
 // #define MOS_EXT_PIN 13
@@ -66,6 +66,16 @@ void sendNTPPacket();
 // void NTP_request();
 // void pins_initialization();
 // void pins_initialization();
+
+struct scanner_TLM_sct {
+  uint8_t TGT_temperature;
+  uint8_t fan;
+  uint8_t temp;
+  uint8_t fan_W_min;
+
+  uint8_t IP[63];
+} ;
+extern scanner_TLM_sct scanner_TLM;
 
 struct labico_parameters_sct {
   uint8_t TGT_temperature;

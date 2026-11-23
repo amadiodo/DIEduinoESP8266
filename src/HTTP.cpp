@@ -16,7 +16,7 @@ AsyncWebServer server(HTTP_PORT);
 
 // Monotonic message counter baked into deterministic payloads so a receiver
 // can verify ordering / completeness across fragments and bursts.
-static uint32_t g_seq = 0;
+// static uint32_t g_seq = 0;
 
 void OTA_handler() {
   ElegantOTA.loop(); 
@@ -103,7 +103,6 @@ static void onWsEvent(AsyncWebSocket *srv, AsyncWebSocketClient *client, AwsEven
   char debug_buffer[100];
   switch (type) {
     case WS_EVT_CONNECT: {
-      char buf[100];
       sprintf(debug_buffer, "HTTP client Id: %d(%d)\t%s:%u ", client->id(), (unsigned)ws.count(), client->remoteIP().toString().c_str(), client->remotePort() );
       debug(debug_buffer);
 
@@ -135,7 +134,6 @@ static void onWsEvent(AsyncWebSocket *srv, AsyncWebSocketClient *client, AwsEven
       if (len == sizeof(uint32_t)) {
         uint32_t sent;
         memcpy(&sent, data, sizeof(sent));
-        char buf[100];
         // sprintf(buf, "[ws] pong id=%" PRIu32 " rtt=%" PRIu32 " us", client->id(), (uint32_t)(micros() - sent));
         // DEBUG_USART.println(buf);
         // Serial.printf("[ws] pong id=%" PRIu32 " rtt=%" PRIu32 " us\r\n", client->id(), (uint32_t)(micros() - sent));
@@ -226,7 +224,9 @@ void server_initialization() {
           return String(cucina_TLM.closed, 1);
         }
         if (var == "ritorno") {
-          return String(cucina_TLM.ritorno, 1);
+          char HTTP_buffer[100];
+          sprintf(HTTP_buffer, "2 %d.%d - 4 %d.%d - 6 %d.%d - 8 %d.%d - 10 %d.%d - 12 %d.%d - 14 %d",  scanner_TLM.IP[2], scanner_TLM.IP[3], scanner_TLM.IP[4], scanner_TLM.IP[5], scanner_TLM.IP[6], scanner_TLM.IP[7], scanner_TLM.IP[8], scanner_TLM.IP[9], scanner_TLM.IP[10], scanner_TLM.IP[11], scanner_TLM.IP[12], scanner_TLM.IP[13], scanner_TLM.IP[14]);
+          return HTTP_buffer;
         }
         if (var == "12V_V") {
           return String(basement_TLM.CC_voltage, 2);

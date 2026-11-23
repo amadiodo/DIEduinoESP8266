@@ -10,7 +10,7 @@ static const char *htmlContenta PROGMEM = R"(
    
    <div class=\"row\">
       <h2>Cucina</h2>
-      Mini: <b>%mini%</b> &nbsp; Casa: <b>%casa%</b> &nbsp; TV: <b>%TV%</b> &nbsp; Ciclo: <b>%ciclo%</b> <span>&#8451;</span>&nbsp; Ritorno: <b>%ritorno%</b> <span>&#8451;</span> &nbsp; Esterno: <b>%esterno% <span>&#8451;</span></b> &nbsp; Frigorifero: <b>%frigorifero%</b>
+      Mini: <b>%mini%</b> &nbsp; Casa: <b>%casa%</b> &nbsp; TV: <b>%TV%</b> &nbsp; Ciclo: <b>%ciclo%</b> <span>&#8451;</span>&nbsp; Ritorno: <b>%ritorno%</b> &nbsp; Esterno: <b>%esterno% <span>&#8451;</span></b> &nbsp; Frigorifero: <b>%frigorifero%</b>
    </div>
 
    <div class=\"row\">
